@@ -8,7 +8,7 @@ on:
     inputs:
       workoutsToDownload:
         type: number
-        default: "5"
+        default: "500"
       saveLocalCopy:
         type: boolean
         default: true
@@ -32,7 +32,7 @@ jobs:
 
     - name: 🗃 Create config file
       env:
-        DEFAULT_WORKOUT_NUM: 5
+        DEFAULT_WORKOUT_NUM: 500
       run: |
         cat <<EOT > /app/configuration.local.json 
         {
@@ -57,7 +57,7 @@ jobs:
             "NumWorkoutsToDownload": ${{ github.event.inputs.workoutsToDownload || env.DEFAULT_WORKOUT_NUM }},
           },
           "Garmin": {
-            "Upload": true,
+            "Upload": false,
             "FormatToUpload": "fit"
           },
           "Observability": {
